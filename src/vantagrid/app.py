@@ -5,10 +5,10 @@ from pathlib import Path
 from textual.app import App, ComposeResult
 from textual.binding import Binding
 from textual.containers import Horizontal, Vertical
-from textual.widgets import Header, Footer, Static
+from textual.widgets import Header, Footer
 
 from vantagrid.services.config_service import ConfigService
-from vantagrid.themes import list_builtin_themes
+from vantagrid.themes import THEMES, list_builtin_themes
 from vantagrid.widgets.terminal_pane import TerminalPane
 from vantagrid.widgets.file_explorer import FileExplorer
 from vantagrid.widgets.tab_bar import TabBar
@@ -34,16 +34,12 @@ class VantaGridApp(App):
     ]
 
     DEFAULT_CSS = """
-    Screen {
-        layout: vertical;
-    }
-
     #app-body {
         height: 1fr;
     }
 
     #sidebar {
-        width: 25;
+        width: 28;
         border-right: solid $primary;
         overflow-y: auto;
     }
@@ -61,7 +57,7 @@ class VantaGridApp(App):
     }
 
     #bottom-panel {
-        height: 8;
+        height: 10;
         border-top: solid $primary;
         overflow-y: auto;
     }
@@ -85,6 +81,10 @@ class VantaGridApp(App):
         self._show_bottom = show_bottom
         self.config_service = ConfigService()
         self.vg_config = self.config_service.load()
+
+        # Register all VantaGrid themes with Textual
+        for theme in THEMES.values():
+            self.register_theme(theme)
 
     def compose(self) -> ComposeResult:
         yield Header()
@@ -110,6 +110,8 @@ class VantaGridApp(App):
         yield Footer()
 
     def on_mount(self) -> None:
+        # Apply the selected theme via Textual's theme system
+        self.theme = self._theme_name
         self.query_one(StatusBar).set_theme(self._theme_name)
         if not self._show_sidebar:
             self.query_one("#sidebar").display = False
@@ -131,12 +133,15 @@ class VantaGridApp(App):
         available = list_builtin_themes()
         if not available:
             return
+        current = self.theme if isinstance(self.theme, str) else self._theme_name
         try:
-            idx = available.index(self._theme_name)
-            self._theme_name = available[(idx + 1) % len(available)]
+            idx = available.index(current)
+            next_theme = available[(idx + 1) % len(available)]
         except ValueError:
-            self._theme_name = available[0]
-        self.query_one(StatusBar).set_theme(self._theme_name)
+            next_theme = available[0]
+        self._theme_name = next_theme
+        self.theme = next_theme
+        self.query_one(StatusBar).set_theme(next_theme)
 
     def action_toggle_sidebar(self) -> None:
         sidebar = self.query_one("#sidebar")
@@ -176,4 +181,5 @@ class VantaGridApp(App):
         self, message: ThemePicker.ThemeSelected
     ) -> None:
         self._theme_name = message.theme_name
+        self.theme = self._theme_name
         self.query_one(StatusBar).set_theme(self._theme_name)

@@ -3,7 +3,6 @@ from __future__ import annotations
 
 from textual.widgets import Static
 from textual.containers import Horizontal
-from textual.reactive import reactive
 
 
 class StatusBar(Horizontal):
@@ -13,84 +12,44 @@ class StatusBar(Horizontal):
     StatusBar {
         height: 1;
         background: $panel;
-        border-top: solid $primary;
+        color: $text;
     }
 
-    .status-left {
-        width: 1fr;
-        content-align: left middle;
-    }
-
-    .status-center {
-        width: 2fr;
-        content-align: center middle;
-    }
-
-    .status-right {
-        width: 1fr;
-        content-align: right middle;
-    }
-
-    .status-text {
-        color: $text-muted;
-    }
-
-    .status-accent {
+    #status-theme {
+        width: auto;
+        min-width: 14;
+        padding: 0 1;
         color: $accent;
         text-style: bold;
     }
+
+    #status-usage {
+        width: 1fr;
+        content-align: center middle;
+        padding: 0 1;
+    }
+
+    #status-keys {
+        width: auto;
+        padding: 0 1;
+        color: $text-muted;
+    }
     """
 
-    theme_name = reactive("synthwave")
-    usage_text = reactive("")
-
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: object) -> None:
         super().__init__(**kwargs)
-        self.usage_data: dict[str, str] = {}
+        self._theme = "synthwave"
 
     def compose(self):
-        """Compose the status bar sections."""
-        yield Static("synthwave", classes="status-left status-text")
-        yield Static("", classes="status-center status-text", id="status-usage")
-        yield Static(
-            "^S swap ^T theme ^B sidebar ^J bottom ^P palette ^K skills ^Q quit",
-            classes="status-right status-text",
-        )
+        yield Static(f" {self._theme} ", id="status-theme")
+        yield Static("", id="status-usage")
+        yield Static("^S swap  ^T theme  ^B sidebar  ^J bottom  ^Q quit", id="status-keys")
 
-    def on_mount(self):
-        """Initialize status bar on mount."""
-        self._update_usage()
+    def set_theme(self, name: str) -> None:
+        self._theme = name
+        if self.is_mounted:
+            self.query_one("#status-theme", Static).update(f" {name} ")
 
-    def watch_theme_name(self, name: str):
-        """Update theme display."""
-        left = self.query_one(".status-left", Static)
-        left.update(name)
-
-    def watch_usage_text(self, text: str):
-        """Update usage display."""
-        center = self.query_one("#status-usage", Static)
-        center.update(text)
-
-    def update_usage(self, usage_data: dict[str, str]):
-        """Update usage information.
-
-        Args:
-            usage_data: Dictionary mapping account names to usage strings
-        """
-        self.usage_data = usage_data
-        self._update_usage()
-
-    def _update_usage(self):
-        """Render usage text."""
-        parts = []
-        for account, usage in self.usage_data.items():
-            parts.append(f"{account}: {usage}")
-        self.usage_text = " | ".join(parts) if parts else ""
-
-    def set_theme(self, theme_name: str):
-        """Set the active theme name.
-
-        Args:
-            theme_name: Name of the theme
-        """
-        self.theme_name = theme_name
+    def set_usage(self, text: str) -> None:
+        if self.is_mounted:
+            self.query_one("#status-usage", Static).update(text)

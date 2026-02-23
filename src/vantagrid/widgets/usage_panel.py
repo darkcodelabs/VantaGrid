@@ -1,113 +1,55 @@
-"""Usage panel widget displaying usage progress bars for accounts."""
+"""Usage panel widget displaying usage information for accounts."""
 from __future__ import annotations
 
-from textual.widgets import Static, ProgressBar
-from textual.containers import Vertical
-from textual.reactive import reactive
+from textual.widgets import Static
 
 
-class UsagePanel(Vertical):
-    """Panel showing usage progress bars and burn rates for each account."""
+class UsagePanel(Static):
+    """Panel showing usage bars and info for each account."""
 
     DEFAULT_CSS = """
     UsagePanel {
-        height: auto;
-        border: solid $primary;
-        background: $panel;
-        padding: 1;
-    }
-
-    .usage-row {
-        height: 3;
-        border: solid $boost;
-        padding: 1;
-        margin: 0 0 1 0;
-    }
-
-    .usage-label {
-        height: 1;
-        width: 1fr;
+        height: 1fr;
+        padding: 0 1;
         color: $text;
-        text-style: bold;
-    }
-
-    .usage-bar {
-        height: 1;
-        width: 1fr;
-    }
-
-    .usage-percent {
-        height: 1;
-        color: $text-muted;
-        width: 1fr;
-    }
-
-    ProgressBar {
-        height: 1;
     }
     """
 
-    is_visible = reactive(True)
+    def __init__(self, **kwargs: object) -> None:
+        super().__init__("", markup=True, **kwargs)
+        self._accounts: dict[str, float] = {}
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.account_usage: dict[str, dict] = {}
-        self._update_interval = None
+    def on_mount(self) -> None:
+        self._refresh_display()
 
-    def compose(self):
-        """Compose the usage panel."""
-        # Will be populated dynamically
-        yield Static("", id="usage-container")
+    def set_account_usage(self, account_name: str, usage_pct: float, burn_rate: str = "") -> None:
+        self._accounts[account_name] = usage_pct
+        self._refresh_display()
 
-    def on_mount(self):
-        """Initialize the panel."""
-        self._update_interval = self.set_interval(5.0, self._refresh)
-
-    def _refresh(self):
-        """Refresh usage display."""
-        self._render_usage()
-
-    def set_account_usage(self, account_name: str, usage_pct: float, burn_rate: str = ""):
-        """Update usage for an account.
-
-        Args:
-            account_name: Account name
-            usage_pct: Usage percentage (0.0-1.0)
-            burn_rate: Burn rate string (e.g., "5% per minute")
-        """
-        self.account_usage[account_name] = {
-            "usage_pct": usage_pct,
-            "burn_rate": burn_rate,
-        }
-        self._render_usage()
-
-    def _render_usage(self):
-        """Render all usage rows."""
-        self.query("Static").remove()
-        if not self.account_usage:
+    def _refresh_display(self) -> None:
+        if not self.is_mounted:
             return
 
-        for account, data in self.account_usage.items():
-            usage_pct = data["usage_pct"]
-            burn_rate = data.get("burn_rate", "")
+        if not self._accounts:
+            self.update("[bold]USAGE[/]\n No usage data")
+            return
 
-            # Determine color based on usage level
-            if usage_pct < 0.5:
+        lines = ["[bold]USAGE[/]"]
+        for name, pct in self._accounts.items():
+            pct_int = int(pct * 100)
+            filled = int(pct * 20)
+            empty = 20 - filled
+
+            if pct < 0.5:
                 color = "green"
-            elif usage_pct < 0.75:
+            elif pct < 0.75:
                 color = "yellow"
-            elif usage_pct < 0.9:
-                color = "yellow"
+            elif pct < 0.9:
+                color = "dark_orange"
             else:
                 color = "red"
 
-            label = Static(f"{account}", classes="usage-label")
-            percent_text = f"{usage_pct*100:.0f}% {burn_rate}"
-            percent = Static(percent_text, classes="usage-percent")
+            bar = f"[{color}]{'█' * filled}[/][dim]{'░' * empty}[/]"
+            lines.append(f" {name:<12} {bar} {pct_int:>3}%")
 
-            self.mount(label, percent)
-
-    def toggle_visibility(self):
-        """Toggle panel visibility."""
-        self.is_visible = not self.is_visible
-        self.display = self.is_visible
+        self.update("\n".join(lines))

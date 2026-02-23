@@ -5,7 +5,7 @@ from pydantic import BaseModel
 class Theme(BaseModel):
     name: str
     label: str
-    css_path: Path
+    css_path: Path | str = ""
     is_builtin: bool = True
     description: str = ""
 
