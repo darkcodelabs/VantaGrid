@@ -12,14 +12,14 @@ class UsagePanel(Vertical):
     DEFAULT_CSS = """
     UsagePanel {
         height: auto;
-        border: 1 solid $primary;
+        border: solid $primary;
         background: $panel;
         padding: 1;
     }
 
     .usage-row {
         height: 3;
-        border: 1 solid $boost;
+        border: solid $boost;
         padding: 1;
         margin: 0 0 1 0;
     }
@@ -61,16 +61,7 @@ class UsagePanel(Vertical):
 
     def on_mount(self):
         """Initialize the panel."""
-        self._start_refresh()
-
-    def on_unmount(self):
-        """Stop refreshing when unmounted."""
-        if self._update_interval:
-            self.app.unset_interval(self._update_interval)
-
-    def _start_refresh(self):
-        """Start periodic refresh of usage data."""
-        self._update_interval = self.app.set_interval(5.0, self._refresh)
+        self._update_interval = self.set_interval(5.0, self._refresh)
 
     def _refresh(self):
         """Refresh usage display."""

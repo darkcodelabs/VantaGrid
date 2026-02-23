@@ -22,7 +22,7 @@ class CommandPalette(Vertical):
         width: 100%;
         height: 100%;
         background: rgba(26, 26, 46, 0.95);
-        border: 1 solid $primary;
+        border: solid $primary;
         align: center top;
         overlay: screen;
     }
@@ -30,7 +30,7 @@ class CommandPalette(Vertical):
     .palette-container {
         width: 80;
         height: auto;
-        border: 1 solid $accent;
+        border: solid $accent;
         background: $panel;
         margin-top: 5;
     }
@@ -38,8 +38,8 @@ class CommandPalette(Vertical):
     #palette-input {
         width: 1fr;
         height: 1;
-        border: 1 solid $accent;
-        border-bottom: 2 solid $accent;
+        border: solid $accent;
+        border-bottom: solid $accent;
     }
 
     .palette-results {

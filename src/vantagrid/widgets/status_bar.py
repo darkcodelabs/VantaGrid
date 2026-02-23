@@ -13,7 +13,7 @@ class StatusBar(Horizontal):
     StatusBar {
         height: 1;
         background: $panel;
-        border-top: 1 solid $primary;
+        border-top: solid $primary;
     }
 
     .status-left {

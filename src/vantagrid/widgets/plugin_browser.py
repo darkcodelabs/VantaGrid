@@ -20,7 +20,7 @@ class PluginBrowser(Vertical):
     DEFAULT_CSS = """
     PluginBrowser {
         height: 1fr;
-        border: 1 solid $primary;
+        border: solid $primary;
         overflow: auto;
     }
 
@@ -34,7 +34,7 @@ class PluginBrowser(Vertical):
 
     .plugin-item {
         height: 4;
-        border: 1 solid $panel;
+        border: solid $panel;
         padding: 1;
         margin: 0 0 1 0;
     }

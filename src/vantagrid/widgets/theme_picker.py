@@ -4,6 +4,7 @@ from __future__ import annotations
 from textual.widgets import Static
 from textual.containers import Vertical
 from textual.message import Message
+from textual.reactive import reactive
 
 
 class ThemePicker(Vertical):
@@ -19,7 +20,7 @@ class ThemePicker(Vertical):
     DEFAULT_CSS = """
     ThemePicker {
         height: auto;
-        border: 1 solid $primary;
+        border: solid $primary;
         overflow: auto;
     }
 
@@ -34,7 +35,6 @@ class ThemePicker(Vertical):
     .theme-item {
         height: 1;
         padding: 0 1;
-        margin: 0 0 1 0;
         color: $text-muted;
     }
 
@@ -50,51 +50,48 @@ class ThemePicker(Vertical):
     }
     """
 
-    def __init__(self, **kwargs):
+    themes_label: reactive[str] = reactive("")
+
+    def __init__(self, **kwargs: object) -> None:
         super().__init__(**kwargs)
         self.themes: list[str] = []
         self.active_theme: str | None = None
 
     def compose(self):
-        """Compose the theme picker."""
         yield Static("THEMES", classes="theme-title")
 
-    def set_themes(self, themes: list[str], active: str | None = None):
-        """Set the list of available themes.
-
-        Args:
-            themes: List of theme names
-            active: Currently active theme name
-        """
+    def set_themes(self, themes: list[str], active: str | None = None) -> None:
         self.themes = themes
         self.active_theme = active
-        self._render_themes()
+        self._trigger_render()
 
-    def set_active_theme(self, theme_name: str):
-        """Mark a theme as active.
-
-        Args:
-            theme_name: Name of the theme to activate
-        """
+    def set_active_theme(self, theme_name: str) -> None:
         self.active_theme = theme_name
-        self._render_themes()
+        self._trigger_render()
 
-    def _render_themes(self):
-        """Re-render the theme list."""
-        self.query("Static").remove()
-        self.mount(Static("THEMES", classes="theme-title"))
+    def _trigger_render(self) -> None:
+        self.themes_label = f"{self.active_theme}|{'|'.join(self.themes)}"
 
+    def watch_themes_label(self, _value: str) -> None:
+        if not self.is_mounted:
+            return
+        # Remove old theme items (keep the title)
+        for child in list(self.children):
+            if "theme-item" in child.classes:
+                child.remove()
         for theme in self.themes:
             is_active = theme == self.active_theme
-            class_name = "theme-item theme-item--active" if is_active else "theme-item"
-            swatch = "◼" if is_active else "◻"
-            label = f"{swatch} {theme}"
-            widget = Static(label, classes=class_name, id=f"theme-{theme}")
+            cls = "theme-item theme-item--active" if is_active else "theme-item"
+            swatch = ">" if is_active else " "
+            widget = Static(f"{swatch} {theme}", classes=cls, id=f"theme-{theme}")
             self.mount(widget)
 
-    def on_static_pressed(self, event: Static.Pressed) -> None:
-        """Handle theme selection."""
-        widget = event.static
-        if widget.id and widget.id.startswith("theme-"):
+    def on_click(self, event) -> None:
+        """Handle theme selection via click."""
+        try:
+            widget = self.screen.get_widget_at(event.screen_x, event.screen_y)
+        except Exception:
+            return
+        if widget and hasattr(widget, "id") and widget.id and widget.id.startswith("theme-"):
             theme_name = widget.id[6:]
             self.post_message(self.ThemeSelected(theme_name))

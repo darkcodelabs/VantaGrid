@@ -7,7 +7,7 @@ Screen {
 
 #sidebar {
     background: #1a1a1a;
-    border-right: 1 solid #00ff41;
+    border-right: solid #00ff41;
     width: 20%;
 }
 
@@ -18,28 +18,28 @@ Screen {
 
 #bottom-panel {
     background: #1a1a1a;
-    border-top: 1 solid #ff006e;
+    border-top: solid #ff006e;
     height: 30%;
 }
 
 #status-bar {
     background: #1a1a1a;
     color: #00b4d8;
-    border-top: 1 solid #ff006e;
+    border-top: solid #ff006e;
     height: 1;
 }
 
 Header {
     background: #1a1a1a;
     color: #00b4d8;
-    border-bottom: 1 solid #ff006e;
+    border-bottom: solid #ff006e;
     padding: 1 2;
 }
 
 Footer {
     background: #1a1a1a;
     color: #00b4d8;
-    border-top: 1 solid #ff006e;
+    border-top: solid #ff006e;
     padding: 1 2;
 }
 
@@ -47,20 +47,20 @@ Footer {
     background: #1a1a1a;
     color: #666666;
     padding: 0 2;
-    border-right: 1 solid #262626;
+    border-right: solid #262626;
 }
 
 .tab--active {
     background: #0d0d0d;
     color: #00ff41;
-    border-bottom: 2 solid #ffbe0b;
+    border-bottom: solid #ffbe0b;
     text-style: bold;
 }
 
 .tab--inactive {
     background: #1a1a1a;
     color: #666666;
-    text-style: normal;
+    text-style: none;
 }
 
 .tab--inactive:hover {
@@ -85,7 +85,7 @@ DirectoryTree > .line:hover {
 .file-explorer {
     background: #1a1a1a;
     color: #e0e0e0;
-    border: 1 solid #00b4d8;
+    border: solid #00b4d8;
 }
 
 .usage-bar {
@@ -104,7 +104,7 @@ ProgressBar > .bar {
 .skill-item {
     background: #1a1a1a;
     color: #e0e0e0;
-    border: 1 solid #00b4d8;
+    border: solid #00b4d8;
     padding: 1 2;
     margin: 0 1;
 }
@@ -132,20 +132,20 @@ ProgressBar > .bar {
 Button {
     background: #262626;
     color: #00b4d8;
-    border: 1 solid #00b4d8;
+    border: solid #00b4d8;
     padding: 0 2;
 }
 
 Button:hover {
     background: #ff006e;
     color: #0d0d0d;
-    border: 1 solid #ff006e;
+    border: solid #ff006e;
     text-style: bold;
     box-shadow: 0 0 15 #ff006e;
 }
 
 Button:focus {
-    border: 1 solid #00ff41;
+    border: solid #00ff41;
     text-style: bold;
     box-shadow: 0 0 15 #00ff41;
 }
@@ -153,13 +153,13 @@ Button:focus {
 Input {
     background: #1a1a1a;
     color: #00ff41;
-    border: 1 solid #00b4d8;
+    border: solid #00b4d8;
     padding: 0 2;
 }
 
 Input:focus {
     background: #262626;
-    border: 1 solid #00ff41;
+    border: solid #00ff41;
     text-style: bold;
     box-shadow: inset 0 0 10 #00ff41;
 }
@@ -170,7 +170,7 @@ Label {
 
 .command-palette {
     background: rgba(13, 13, 13, 0.98);
-    border: 2 solid #00b4d8;
+    border: solid #00b4d8;
     overlay: screen;
     box-shadow: 0 0 30 #ff006e;
 }
@@ -178,33 +178,33 @@ Label {
 .command-palette-input {
     background: #1a1a1a;
     color: #00ff41;
-    border: 1 solid #00b4d8;
-    border-bottom: 2 solid #ffbe0b;
+    border: solid #00b4d8;
+    border-bottom: solid #ffbe0b;
     padding: 0 2;
 }
 
 .command-palette-input:focus {
     background: #262626;
-    border: 1 solid #00ff41;
+    border: solid #00ff41;
     box-shadow: inset 0 0 10 #00ff41;
 }
 
 .terminal-pane {
     background: #1a1a1a;
     color: #e0e0e0;
-    border: 1 solid #00b4d8;
+    border: solid #00b4d8;
 }
 
 .terminal-pane--focused {
     background: #1a1a1a;
-    border: 2 solid #00ff41;
+    border: solid #00ff41;
     box-shadow: inset 0 0 10 #00ff41;
 }
 
 Toast {
     background: #1a1a1a;
     color: #00b4d8;
-    border: 1 solid #ff006e;
+    border: solid #ff006e;
     padding: 1 2;
     box-shadow: 0 0 20 #ff006e;
 }
@@ -212,5 +212,5 @@ Toast {
 .switch-toast {
     background: #262626;
     color: #e0e0e0;
-    border: 1 solid #00ff41;
+    border: solid #00ff41;
 }

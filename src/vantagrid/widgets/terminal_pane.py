@@ -13,7 +13,7 @@ class TerminalPane(Widget):
     DEFAULT_CSS = """
     TerminalPane {
         height: 1fr;
-        border: 1 solid #e94560;
+        border: solid #e94560;
     }
 
     .terminal-output {

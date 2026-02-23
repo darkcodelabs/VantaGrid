@@ -7,7 +7,7 @@ Screen {
 
 #sidebar {
     background: #3b4252;
-    border-right: 1 solid #88c0d0;
+    border-right: solid #88c0d0;
     width: 20%;
 }
 
@@ -18,28 +18,28 @@ Screen {
 
 #bottom-panel {
     background: #3b4252;
-    border-top: 1 solid #88c0d0;
+    border-top: solid #88c0d0;
     height: 30%;
 }
 
 #status-bar {
     background: #3b4252;
     color: #88c0d0;
-    border-top: 1 solid #81a1c1;
+    border-top: solid #81a1c1;
     height: 1;
 }
 
 Header {
     background: #3b4252;
     color: #88c0d0;
-    border-bottom: 1 solid #81a1c1;
+    border-bottom: solid #81a1c1;
     padding: 1 2;
 }
 
 Footer {
     background: #3b4252;
     color: #88c0d0;
-    border-top: 1 solid #81a1c1;
+    border-top: solid #81a1c1;
     padding: 1 2;
 }
 
@@ -47,20 +47,20 @@ Footer {
     background: #3b4252;
     color: #81a1c1;
     padding: 0 2;
-    border-right: 1 solid #4c566a;
+    border-right: solid #4c566a;
 }
 
 .tab--active {
     background: #2e3440;
     color: #88c0d0;
-    border-bottom: 2 solid #a3be8c;
+    border-bottom: solid #a3be8c;
     text-style: bold;
 }
 
 .tab--inactive {
     background: #3b4252;
     color: #81a1c1;
-    text-style: normal;
+    text-style: none;
 }
 
 .tab--inactive:hover {
@@ -85,7 +85,7 @@ DirectoryTree > .line:hover {
 .file-explorer {
     background: #3b4252;
     color: #eceff4;
-    border: 1 solid #81a1c1;
+    border: solid #81a1c1;
 }
 
 .usage-bar {
@@ -104,7 +104,7 @@ ProgressBar > .bar {
 .skill-item {
     background: #3b4252;
     color: #eceff4;
-    border: 1 solid #81a1c1;
+    border: solid #81a1c1;
     padding: 1 2;
     margin: 0 1;
 }
@@ -131,7 +131,7 @@ ProgressBar > .bar {
 Button {
     background: #4c566a;
     color: #88c0d0;
-    border: 1 solid #81a1c1;
+    border: solid #81a1c1;
     padding: 0 2;
 }
 
@@ -142,20 +142,20 @@ Button:hover {
 }
 
 Button:focus {
-    border: 1 solid #88c0d0;
+    border: solid #88c0d0;
     text-style: bold;
 }
 
 Input {
     background: #3b4252;
     color: #88c0d0;
-    border: 1 solid #81a1c1;
+    border: solid #81a1c1;
     padding: 0 2;
 }
 
 Input:focus {
     background: #4c566a;
-    border: 1 solid #88c0d0;
+    border: solid #88c0d0;
     text-style: bold;
 }
 
@@ -165,44 +165,44 @@ Label {
 
 .command-palette {
     background: rgba(46, 52, 64, 0.95);
-    border: 1 solid #81a1c1;
+    border: solid #81a1c1;
     overlay: screen;
 }
 
 .command-palette-input {
     background: #3b4252;
     color: #88c0d0;
-    border: 1 solid #81a1c1;
-    border-bottom: 2 solid #88c0d0;
+    border: solid #81a1c1;
+    border-bottom: solid #88c0d0;
     padding: 0 2;
 }
 
 .command-palette-input:focus {
     background: #4c566a;
-    border: 1 solid #88c0d0;
+    border: solid #88c0d0;
 }
 
 .terminal-pane {
     background: #3b4252;
     color: #eceff4;
-    border: 1 solid #81a1c1;
+    border: solid #81a1c1;
 }
 
 .terminal-pane--focused {
     background: #3b4252;
-    border: 1 solid #88c0d0;
+    border: solid #88c0d0;
     box-shadow: inset 0 0 10 #88c0d0;
 }
 
 Toast {
     background: #3b4252;
     color: #88c0d0;
-    border: 1 solid #81a1c1;
+    border: solid #81a1c1;
     padding: 1 2;
 }
 
 .switch-toast {
     background: #4c566a;
     color: #eceff4;
-    border: 1 solid #81a1c1;
+    border: solid #81a1c1;
 }

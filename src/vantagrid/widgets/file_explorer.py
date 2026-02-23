@@ -21,7 +21,7 @@ class FileExplorer(Vertical):
     FileExplorer {
         height: 1fr;
         overflow: auto;
-        border: 1 solid #e94560;
+        border: solid #e94560;
     }
 
     .explorer-title {
