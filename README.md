@@ -15,14 +15,54 @@ Terminal IDE for multi-account Claude Code — split sessions, usage monitoring,
 
 ## Install
 
+### Prerequisites
+
+- Python 3.10+
+- [uv](https://docs.astral.sh/uv/getting-started/installation/) (recommended) or pip
+
+### Clone & Install
+
 ```bash
-uv tool install vantagrid
+git clone https://github.com/darkcodelabs/VantaGrid.git ~/VantaGrid
+cd ~/VantaGrid
+uv sync
+```
+
+### Run
+
+```bash
+# From the project directory
+uv run vg
+
+# Or with full name
+uv run vantagrid
+```
+
+### Install Globally (optional)
+
+To make `vg` available anywhere without `uv run`:
+
+```bash
+uv tool install ~/VantaGrid
+vg
+```
+
+To uninstall:
+
+```bash
+uv tool uninstall vantagrid
 ```
 
 ## Usage
 
 ```bash
-vantagrid    # or: vg
+vg                      # launch with defaults
+vg --theme dracula      # launch with a specific theme
+vg --no-sidebar         # launch without the sidebar
+vg --no-bottom          # launch without the bottom panel
+vg themes               # list available themes
+vg accounts             # show discovered Claude Code accounts
+vg config               # open config file location
 ```
 
 ## Hotkeys
@@ -35,8 +75,13 @@ vantagrid    # or: vg
 | `Ctrl+J` | Toggle bottom panel |
 | `Ctrl+P` | Command palette |
 | `Ctrl+K` | Open skill browser |
-| `Ctrl+1/2` | Focus pane 1 or 2 |
 | `Ctrl+Q` | Quit |
+
+## Themes
+
+7 built-in themes: **synthwave** (default), **dracula**, **nord**, **gruvbox**, **tokyo_night**, **cyberpunk**, **monochrome**
+
+Cycle with `Ctrl+T` or pick from the sidebar.
 
 ## Configuration
 
@@ -44,13 +89,16 @@ vantagrid    # or: vg
 ~/.config/vantagrid/config.toml
 ```
 
+Run `vg config` to open or create the config file.
+
 ## Development
 
 ```bash
-git clone https://github.com/darkcodelabs/VantaGrid
-cd VantaGrid
+git clone https://github.com/darkcodelabs/VantaGrid.git ~/VantaGrid
+cd ~/VantaGrid
 uv sync --extra dev
-pytest
+uv run pytest
+uv run ruff check src/vantagrid
 ```
 
 ## License
