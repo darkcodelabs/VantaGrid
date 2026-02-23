@@ -1,0 +1,208 @@
+/* Dracula Theme - Classic Dark */
+
+Screen {
+    background: #282a36;
+    color: #f8f8f2;
+}
+
+#sidebar {
+    background: #21222c;
+    border-right: 1 solid #6272a4;
+    width: 20%;
+}
+
+#main-content {
+    background: #282a36;
+    color: #f8f8f2;
+}
+
+#bottom-panel {
+    background: #21222c;
+    border-top: 1 solid #6272a4;
+    height: 30%;
+}
+
+#status-bar {
+    background: #21222c;
+    color: #8be9fd;
+    border-top: 1 solid #6272a4;
+    height: 1;
+}
+
+Header {
+    background: #21222c;
+    color: #8be9fd;
+    border-bottom: 1 solid #6272a4;
+    padding: 1 2;
+}
+
+Footer {
+    background: #21222c;
+    color: #8be9fd;
+    border-top: 1 solid #6272a4;
+    padding: 1 2;
+}
+
+.tab {
+    background: #21222c;
+    color: #6272a4;
+    padding: 0 2;
+    border-right: 1 solid #44475a;
+}
+
+.tab--active {
+    background: #282a36;
+    color: #8be9fd;
+    border-bottom: 2 solid #50fa7b;
+    text-style: bold;
+}
+
+.tab--inactive {
+    background: #21222c;
+    color: #6272a4;
+    text-style: normal;
+}
+
+.tab--inactive:hover {
+    background: #44475a;
+    color: #8be9fd;
+}
+
+DirectoryTree {
+    background: #21222c;
+    color: #f8f8f2;
+}
+
+DirectoryTree > .line {
+    color: #f8f8f2;
+}
+
+DirectoryTree > .line:hover {
+    background: #44475a;
+    color: #8be9fd;
+}
+
+.file-explorer {
+    background: #21222c;
+    color: #f8f8f2;
+    border: 1 solid #6272a4;
+}
+
+.usage-bar {
+    background: #21222c;
+    color: #8be9fd;
+}
+
+ProgressBar {
+    bar-color: #50fa7b;
+}
+
+ProgressBar > .bar {
+    color: #50fa7b;
+}
+
+.skill-item {
+    background: #21222c;
+    color: #f8f8f2;
+    border: 1 solid #6272a4;
+    padding: 1 2;
+    margin: 0 1;
+}
+
+.skill-item:hover {
+    background: #44475a;
+    border-color: #8be9fd;
+    color: #8be9fd;
+}
+
+.skill-install-btn {
+    background: #50fa7b;
+    color: #282a36;
+    border: none;
+    padding: 0 2;
+    text-style: bold;
+}
+
+.skill-install-btn:hover {
+    background: #69f99d;
+    color: #282a36;
+}
+
+Button {
+    background: #44475a;
+    color: #8be9fd;
+    border: 1 solid #6272a4;
+    padding: 0 2;
+}
+
+Button:hover {
+    background: #6272a4;
+    color: #f8f8f2;
+    text-style: bold;
+}
+
+Button:focus {
+    border: 1 solid #8be9fd;
+    text-style: bold;
+}
+
+Input {
+    background: #21222c;
+    color: #8be9fd;
+    border: 1 solid #6272a4;
+    padding: 0 2;
+}
+
+Input:focus {
+    background: #44475a;
+    border: 1 solid #8be9fd;
+    text-style: bold;
+}
+
+Label {
+    color: #f8f8f2;
+}
+
+.command-palette {
+    background: rgba(40, 42, 54, 0.95);
+    border: 1 solid #6272a4;
+    overlay: screen;
+}
+
+.command-palette-input {
+    background: #21222c;
+    color: #8be9fd;
+    border: 1 solid #6272a4;
+    border-bottom: 2 solid #8be9fd;
+    padding: 0 2;
+}
+
+.command-palette-input:focus {
+    background: #44475a;
+    border: 1 solid #8be9fd;
+}
+
+.terminal-pane {
+    background: #21222c;
+    color: #f8f8f2;
+    border: 1 solid #6272a4;
+}
+
+.terminal-pane--focused {
+    background: #21222c;
+    border: 1 solid #8be9fd;
+    box-shadow: inset 0 0 10 #8be9fd;
+}
+
+Toast {
+    background: #21222c;
+    color: #8be9fd;
+    border: 1 solid #6272a4;
+    padding: 1 2;
+}
+
+.switch-toast {
+    background: #44475a;
+    color: #f8f8f2;
+    border: 1 solid #6272a4;
+}

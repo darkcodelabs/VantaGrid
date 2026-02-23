@@ -1,0 +1,208 @@
+/* Gruvbox Theme - Retro Groove */
+
+Screen {
+    background: #282828;
+    color: #ebdbb2;
+}
+
+#sidebar {
+    background: #3c3836;
+    border-right: 1 solid #8f3f71;
+    width: 20%;
+}
+
+#main-content {
+    background: #282828;
+    color: #ebdbb2;
+}
+
+#bottom-panel {
+    background: #3c3836;
+    border-top: 1 solid #8f3f71;
+    height: 30%;
+}
+
+#status-bar {
+    background: #3c3836;
+    color: #b8bb26;
+    border-top: 1 solid #8f3f71;
+    height: 1;
+}
+
+Header {
+    background: #3c3836;
+    color: #b8bb26;
+    border-bottom: 1 solid #8f3f71;
+    padding: 1 2;
+}
+
+Footer {
+    background: #3c3836;
+    color: #b8bb26;
+    border-top: 1 solid #8f3f71;
+    padding: 1 2;
+}
+
+.tab {
+    background: #3c3836;
+    color: #a89984;
+    padding: 0 2;
+    border-right: 1 solid #504945;
+}
+
+.tab--active {
+    background: #282828;
+    color: #d79921;
+    border-bottom: 2 solid #98971a;
+    text-style: bold;
+}
+
+.tab--inactive {
+    background: #3c3836;
+    color: #a89984;
+    text-style: normal;
+}
+
+.tab--inactive:hover {
+    background: #504945;
+    color: #d79921;
+}
+
+DirectoryTree {
+    background: #3c3836;
+    color: #ebdbb2;
+}
+
+DirectoryTree > .line {
+    color: #ebdbb2;
+}
+
+DirectoryTree > .line:hover {
+    background: #504945;
+    color: #d79921;
+}
+
+.file-explorer {
+    background: #3c3836;
+    color: #ebdbb2;
+    border: 1 solid #8f3f71;
+}
+
+.usage-bar {
+    background: #3c3836;
+    color: #b8bb26;
+}
+
+ProgressBar {
+    bar-color: #98971a;
+}
+
+ProgressBar > .bar {
+    color: #98971a;
+}
+
+.skill-item {
+    background: #3c3836;
+    color: #ebdbb2;
+    border: 1 solid #8f3f71;
+    padding: 1 2;
+    margin: 0 1;
+}
+
+.skill-item:hover {
+    background: #504945;
+    border-color: #d79921;
+    color: #d79921;
+}
+
+.skill-install-btn {
+    background: #98971a;
+    color: #282828;
+    border: none;
+    padding: 0 2;
+    text-style: bold;
+}
+
+.skill-install-btn:hover {
+    background: #b8bb26;
+    color: #282828;
+}
+
+Button {
+    background: #504945;
+    color: #b8bb26;
+    border: 1 solid #8f3f71;
+    padding: 0 2;
+}
+
+Button:hover {
+    background: #8f3f71;
+    color: #ebdbb2;
+    text-style: bold;
+}
+
+Button:focus {
+    border: 1 solid #d79921;
+    text-style: bold;
+}
+
+Input {
+    background: #3c3836;
+    color: #d79921;
+    border: 1 solid #8f3f71;
+    padding: 0 2;
+}
+
+Input:focus {
+    background: #504945;
+    border: 1 solid #d79921;
+    text-style: bold;
+}
+
+Label {
+    color: #ebdbb2;
+}
+
+.command-palette {
+    background: rgba(40, 40, 40, 0.95);
+    border: 1 solid #8f3f71;
+    overlay: screen;
+}
+
+.command-palette-input {
+    background: #3c3836;
+    color: #d79921;
+    border: 1 solid #8f3f71;
+    border-bottom: 2 solid #d79921;
+    padding: 0 2;
+}
+
+.command-palette-input:focus {
+    background: #504945;
+    border: 1 solid #d79921;
+}
+
+.terminal-pane {
+    background: #3c3836;
+    color: #ebdbb2;
+    border: 1 solid #8f3f71;
+}
+
+.terminal-pane--focused {
+    background: #3c3836;
+    border: 1 solid #d79921;
+    box-shadow: inset 0 0 10 #d79921;
+}
+
+Toast {
+    background: #3c3836;
+    color: #d79921;
+    border: 1 solid #8f3f71;
+    padding: 1 2;
+}
+
+.switch-toast {
+    background: #504945;
+    color: #ebdbb2;
+    border: 1 solid #8f3f71;
+}

@@ -1,0 +1,208 @@
+/* Monochrome Theme - Clean Grayscale */
+
+Screen {
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
+
+#sidebar {
+    background: #262626;
+    border-right: 1 solid #ffffff;
+    width: 20%;
+}
+
+#main-content {
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
+
+#bottom-panel {
+    background: #262626;
+    border-top: 1 solid #ffffff;
+    height: 30%;
+}
+
+#status-bar {
+    background: #262626;
+    color: #ffffff;
+    border-top: 1 solid #333333;
+    height: 1;
+}
+
+Header {
+    background: #262626;
+    color: #ffffff;
+    border-bottom: 1 solid #333333;
+    padding: 1 2;
+}
+
+Footer {
+    background: #262626;
+    color: #ffffff;
+    border-top: 1 solid #333333;
+    padding: 1 2;
+}
+
+.tab {
+    background: #262626;
+    color: #999999;
+    padding: 0 2;
+    border-right: 1 solid #333333;
+}
+
+.tab--active {
+    background: #1a1a1a;
+    color: #ffffff;
+    border-bottom: 2 solid #ffffff;
+    text-style: bold;
+}
+
+.tab--inactive {
+    background: #262626;
+    color: #999999;
+    text-style: normal;
+}
+
+.tab--inactive:hover {
+    background: #333333;
+    color: #b3b3b3;
+}
+
+DirectoryTree {
+    background: #262626;
+    color: #e0e0e0;
+}
+
+DirectoryTree > .line {
+    color: #e0e0e0;
+}
+
+DirectoryTree > .line:hover {
+    background: #333333;
+    color: #ffffff;
+}
+
+.file-explorer {
+    background: #262626;
+    color: #e0e0e0;
+    border: 1 solid #333333;
+}
+
+.usage-bar {
+    background: #262626;
+    color: #ffffff;
+}
+
+ProgressBar {
+    bar-color: #ffffff;
+}
+
+ProgressBar > .bar {
+    color: #ffffff;
+}
+
+.skill-item {
+    background: #262626;
+    color: #e0e0e0;
+    border: 1 solid #333333;
+    padding: 1 2;
+    margin: 0 1;
+}
+
+.skill-item:hover {
+    background: #333333;
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+.skill-install-btn {
+    background: #ffffff;
+    color: #1a1a1a;
+    border: none;
+    padding: 0 2;
+    text-style: bold;
+}
+
+.skill-install-btn:hover {
+    background: #cccccc;
+    color: #1a1a1a;
+}
+
+Button {
+    background: #333333;
+    color: #ffffff;
+    border: 1 solid #666666;
+    padding: 0 2;
+}
+
+Button:hover {
+    background: #4d4d4d;
+    color: #ffffff;
+    text-style: bold;
+}
+
+Button:focus {
+    border: 1 solid #ffffff;
+    text-style: bold;
+}
+
+Input {
+    background: #262626;
+    color: #ffffff;
+    border: 1 solid #333333;
+    padding: 0 2;
+}
+
+Input:focus {
+    background: #333333;
+    border: 1 solid #ffffff;
+    text-style: bold;
+}
+
+Label {
+    color: #e0e0e0;
+}
+
+.command-palette {
+    background: rgba(26, 26, 26, 0.95);
+    border: 1 solid #ffffff;
+    overlay: screen;
+}
+
+.command-palette-input {
+    background: #262626;
+    color: #ffffff;
+    border: 1 solid #333333;
+    border-bottom: 2 solid #ffffff;
+    padding: 0 2;
+}
+
+.command-palette-input:focus {
+    background: #333333;
+    border: 1 solid #ffffff;
+}
+
+.terminal-pane {
+    background: #262626;
+    color: #e0e0e0;
+    border: 1 solid #333333;
+}
+
+.terminal-pane--focused {
+    background: #262626;
+    border: 1 solid #ffffff;
+    box-shadow: inset 0 0 10 #666666;
+}
+
+Toast {
+    background: #262626;
+    color: #ffffff;
+    border: 1 solid #333333;
+    padding: 1 2;
+}
+
+.switch-toast {
+    background: #333333;
+    color: #e0e0e0;
+    border: 1 solid #666666;
+}

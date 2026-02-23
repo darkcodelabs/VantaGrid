@@ -1,0 +1,208 @@
+/* Nord Theme - Arctic Cool */
+
+Screen {
+    background: #2e3440;
+    color: #eceff4;
+}
+
+#sidebar {
+    background: #3b4252;
+    border-right: 1 solid #88c0d0;
+    width: 20%;
+}
+
+#main-content {
+    background: #2e3440;
+    color: #eceff4;
+}
+
+#bottom-panel {
+    background: #3b4252;
+    border-top: 1 solid #88c0d0;
+    height: 30%;
+}
+
+#status-bar {
+    background: #3b4252;
+    color: #88c0d0;
+    border-top: 1 solid #81a1c1;
+    height: 1;
+}
+
+Header {
+    background: #3b4252;
+    color: #88c0d0;
+    border-bottom: 1 solid #81a1c1;
+    padding: 1 2;
+}
+
+Footer {
+    background: #3b4252;
+    color: #88c0d0;
+    border-top: 1 solid #81a1c1;
+    padding: 1 2;
+}
+
+.tab {
+    background: #3b4252;
+    color: #81a1c1;
+    padding: 0 2;
+    border-right: 1 solid #4c566a;
+}
+
+.tab--active {
+    background: #2e3440;
+    color: #88c0d0;
+    border-bottom: 2 solid #a3be8c;
+    text-style: bold;
+}
+
+.tab--inactive {
+    background: #3b4252;
+    color: #81a1c1;
+    text-style: normal;
+}
+
+.tab--inactive:hover {
+    background: #4c566a;
+    color: #88c0d0;
+}
+
+DirectoryTree {
+    background: #3b4252;
+    color: #eceff4;
+}
+
+DirectoryTree > .line {
+    color: #eceff4;
+}
+
+DirectoryTree > .line:hover {
+    background: #4c566a;
+    color: #88c0d0;
+}
+
+.file-explorer {
+    background: #3b4252;
+    color: #eceff4;
+    border: 1 solid #81a1c1;
+}
+
+.usage-bar {
+    background: #3b4252;
+    color: #88c0d0;
+}
+
+ProgressBar {
+    bar-color: #a3be8c;
+}
+
+ProgressBar > .bar {
+    color: #a3be8c;
+}
+
+.skill-item {
+    background: #3b4252;
+    color: #eceff4;
+    border: 1 solid #81a1c1;
+    padding: 1 2;
+    margin: 0 1;
+}
+
+.skill-item:hover {
+    background: #4c566a;
+    border-color: #88c0d0;
+    color: #88c0d0;
+}
+
+.skill-install-btn {
+    background: #a3be8c;
+    color: #2e3440;
+    border: none;
+    padding: 0 2;
+    text-style: bold;
+}
+
+.skill-install-btn:hover {
+    background: #b9dab5;
+    color: #2e3440;
+}
+
+Button {
+    background: #4c566a;
+    color: #88c0d0;
+    border: 1 solid #81a1c1;
+    padding: 0 2;
+}
+
+Button:hover {
+    background: #5e81ac;
+    color: #eceff4;
+    text-style: bold;
+}
+
+Button:focus {
+    border: 1 solid #88c0d0;
+    text-style: bold;
+}
+
+Input {
+    background: #3b4252;
+    color: #88c0d0;
+    border: 1 solid #81a1c1;
+    padding: 0 2;
+}
+
+Input:focus {
+    background: #4c566a;
+    border: 1 solid #88c0d0;
+    text-style: bold;
+}
+
+Label {
+    color: #eceff4;
+}
+
+.command-palette {
+    background: rgba(46, 52, 64, 0.95);
+    border: 1 solid #81a1c1;
+    overlay: screen;
+}
+
+.command-palette-input {
+    background: #3b4252;
+    color: #88c0d0;
+    border: 1 solid #81a1c1;
+    border-bottom: 2 solid #88c0d0;
+    padding: 0 2;
+}
+
+.command-palette-input:focus {
+    background: #4c566a;
+    border: 1 solid #88c0d0;
+}
+
+.terminal-pane {
+    background: #3b4252;
+    color: #eceff4;
+    border: 1 solid #81a1c1;
+}
+
+.terminal-pane--focused {
+    background: #3b4252;
+    border: 1 solid #88c0d0;
+    box-shadow: inset 0 0 10 #88c0d0;
+}
+
+Toast {
+    background: #3b4252;
+    color: #88c0d0;
+    border: 1 solid #81a1c1;
+    padding: 1 2;
+}
+
+.switch-toast {
+    background: #4c566a;
+    color: #eceff4;
+    border: 1 solid #81a1c1;
+}

@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0",
+  "skills": [
+    {
+      "name": "commit-message",
+      "description": "Generate clear, conventional commit messages from git diffs",
+      "version": "1.0.0",
+      "source": "builtin",
+      "tags": ["git", "workflow"]
+    },
+    {
+      "name": "security-audit",
+      "description": "Audit code and dependencies for security vulnerabilities",
+      "version": "1.0.0",
+      "source": "builtin",
+      "tags": ["security", "audit"]
+    }
+  ]
+}

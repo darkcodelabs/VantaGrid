@@ -1,0 +1,208 @@
+/* Tokyo Night Theme - Modern Japanese Aesthetic */
+
+Screen {
+    background: #1a1b26;
+    color: #a9b1d6;
+}
+
+#sidebar {
+    background: #16161e;
+    border-right: 1 solid #7aa2f7;
+    width: 20%;
+}
+
+#main-content {
+    background: #1a1b26;
+    color: #a9b1d6;
+}
+
+#bottom-panel {
+    background: #16161e;
+    border-top: 1 solid #7aa2f7;
+    height: 30%;
+}
+
+#status-bar {
+    background: #16161e;
+    color: #7dcfff;
+    border-top: 1 solid #7aa2f7;
+    height: 1;
+}
+
+Header {
+    background: #16161e;
+    color: #7dcfff;
+    border-bottom: 1 solid #7aa2f7;
+    padding: 1 2;
+}
+
+Footer {
+    background: #16161e;
+    color: #7dcfff;
+    border-top: 1 solid #7aa2f7;
+    padding: 1 2;
+}
+
+.tab {
+    background: #16161e;
+    color: #7aa2f7;
+    padding: 0 2;
+    border-right: 1 solid #292e42;
+}
+
+.tab--active {
+    background: #1a1b26;
+    color: #7dcfff;
+    border-bottom: 2 solid #9ece6a;
+    text-style: bold;
+}
+
+.tab--inactive {
+    background: #16161e;
+    color: #7aa2f7;
+    text-style: normal;
+}
+
+.tab--inactive:hover {
+    background: #292e42;
+    color: #7dcfff;
+}
+
+DirectoryTree {
+    background: #16161e;
+    color: #a9b1d6;
+}
+
+DirectoryTree > .line {
+    color: #a9b1d6;
+}
+
+DirectoryTree > .line:hover {
+    background: #292e42;
+    color: #7dcfff;
+}
+
+.file-explorer {
+    background: #16161e;
+    color: #a9b1d6;
+    border: 1 solid #7aa2f7;
+}
+
+.usage-bar {
+    background: #16161e;
+    color: #7dcfff;
+}
+
+ProgressBar {
+    bar-color: #9ece6a;
+}
+
+ProgressBar > .bar {
+    color: #9ece6a;
+}
+
+.skill-item {
+    background: #16161e;
+    color: #a9b1d6;
+    border: 1 solid #7aa2f7;
+    padding: 1 2;
+    margin: 0 1;
+}
+
+.skill-item:hover {
+    background: #292e42;
+    border-color: #7dcfff;
+    color: #7dcfff;
+}
+
+.skill-install-btn {
+    background: #9ece6a;
+    color: #1a1b26;
+    border: none;
+    padding: 0 2;
+    text-style: bold;
+}
+
+.skill-install-btn:hover {
+    background: #b9f27f;
+    color: #1a1b26;
+}
+
+Button {
+    background: #292e42;
+    color: #7dcfff;
+    border: 1 solid #7aa2f7;
+    padding: 0 2;
+}
+
+Button:hover {
+    background: #3f4859;
+    color: #a9b1d6;
+    text-style: bold;
+}
+
+Button:focus {
+    border: 1 solid #7dcfff;
+    text-style: bold;
+}
+
+Input {
+    background: #16161e;
+    color: #7dcfff;
+    border: 1 solid #7aa2f7;
+    padding: 0 2;
+}
+
+Input:focus {
+    background: #292e42;
+    border: 1 solid #7dcfff;
+    text-style: bold;
+}
+
+Label {
+    color: #a9b1d6;
+}
+
+.command-palette {
+    background: rgba(26, 27, 38, 0.95);
+    border: 1 solid #7aa2f7;
+    overlay: screen;
+}
+
+.command-palette-input {
+    background: #16161e;
+    color: #7dcfff;
+    border: 1 solid #7aa2f7;
+    border-bottom: 2 solid #7dcfff;
+    padding: 0 2;
+}
+
+.command-palette-input:focus {
+    background: #292e42;
+    border: 1 solid #7dcfff;
+}
+
+.terminal-pane {
+    background: #16161e;
+    color: #a9b1d6;
+    border: 1 solid #7aa2f7;
+}
+
+.terminal-pane--focused {
+    background: #16161e;
+    border: 1 solid #7dcfff;
+    box-shadow: inset 0 0 10 #7dcfff;
+}
+
+Toast {
+    background: #16161e;
+    color: #7dcfff;
+    border: 1 solid #7aa2f7;
+    padding: 1 2;
+}
+
+.switch-toast {
+    background: #292e42;
+    color: #a9b1d6;
+    border: 1 solid #7aa2f7;
+}

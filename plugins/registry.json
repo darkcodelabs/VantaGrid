@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "plugins": [
+    {
+      "name": "session-logger",
+      "description": "Log session events (start, stop, switch) to a file",
+      "version": "1.0.0",
+      "hooks": ["on_session_start", "on_switch"],
+      "source": "builtin"
+    }
+  ]
+}
