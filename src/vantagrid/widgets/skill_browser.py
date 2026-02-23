@@ -33,7 +33,7 @@ class SkillBrowser(Vertical):
     DEFAULT_CSS = """
     SkillBrowser {
         height: 1fr;
-        border: solid $primary;
+        border: round $primary;
         overflow: auto;
     }
 
@@ -47,7 +47,7 @@ class SkillBrowser(Vertical):
 
     .skill-item {
         height: 3;
-        border: solid $panel;
+        border: round $panel;
         padding: 1;
         margin: 0 0 1 0;
     }

@@ -12,7 +12,7 @@ class SwitchToast(Container):
     SwitchToast {
         height: 3;
         width: 40;
-        border: solid $primary;
+        border: round $primary;
         background: $panel;
         align: center middle;
         offset: 0 -3;

@@ -4,7 +4,6 @@ from __future__ import annotations
 from textual.widgets import Static
 from textual.containers import Horizontal
 from textual.message import Message
-from textual.reactive import reactive
 
 
 class TabBar(Horizontal):
@@ -50,8 +49,6 @@ class TabBar(Horizontal):
     }
     """
 
-    tab_labels: reactive[str] = reactive("")
-
     def __init__(self, **kwargs: object) -> None:
         super().__init__(**kwargs)
         self.tabs: dict[str, str] = {}
@@ -61,48 +58,31 @@ class TabBar(Horizontal):
         self.tabs[tab_id] = label
         if self.active_tab is None:
             self.active_tab = tab_id
-        self._update_labels()
+        if self.is_mounted:
+            is_active = tab_id == self.active_tab
+            cls = "tab tab--active" if is_active else "tab tab--inactive"
+            self.mount(Static(f" {label} ", classes=cls, name=tab_id))
 
     def remove_tab(self, tab_id: str) -> None:
         if tab_id in self.tabs:
             del self.tabs[tab_id]
             if self.active_tab == tab_id:
                 self.active_tab = next(iter(self.tabs), None)
-            self._update_labels()
+            for child in list(self.children):
+                if child.name == tab_id:
+                    child.remove()
             self.post_message(self.TabClosed(tab_id))
 
     def activate_tab(self, tab_id: str) -> None:
-        if tab_id in self.tabs:
-            self.active_tab = tab_id
-            self._update_labels()
-            self.post_message(self.TabActivated(tab_id))
-
-    def _update_labels(self) -> None:
-        """Update the reactive label string to trigger re-render."""
-        parts = []
-        for tab_id, label in self.tabs.items():
-            marker = ">" if tab_id == self.active_tab else " "
-            parts.append(f"{marker}{tab_id}:{label}")
-        self.tab_labels = "|".join(parts)
-
-    def compose(self):
-        for tab_id, label in self.tabs.items():
-            is_active = tab_id == self.active_tab
-            cls = "tab tab--active" if is_active else "tab tab--inactive"
-            yield Static(f" {label} ", classes=cls, id=f"tab-{tab_id}")
-
-    def watch_tab_labels(self, _value: str) -> None:
-        """Re-render tabs when labels change."""
-        if not self.is_mounted:
+        if tab_id not in self.tabs:
             return
-        # Remove existing tab widgets and add new ones
-        for child in list(self.children):
-            child.remove()
-        for tab_id, label in self.tabs.items():
-            is_active = tab_id == self.active_tab
-            cls = "tab tab--active" if is_active else "tab tab--inactive"
-            widget = Static(f" {label} ", classes=cls, id=f"tab-{tab_id}")
-            self.mount(widget)
+        self.active_tab = tab_id
+        for child in self.children:
+            if child.name == tab_id:
+                child.set_classes("tab tab--active")
+            else:
+                child.set_classes("tab tab--inactive")
+        self.post_message(self.TabActivated(tab_id))
 
     def on_click(self, event) -> None:
         """Handle tab click."""
@@ -110,6 +90,5 @@ class TabBar(Horizontal):
             widget = self.screen.get_widget_at(event.screen_x, event.screen_y)
         except Exception:
             return
-        if widget and hasattr(widget, "id") and widget.id and widget.id.startswith("tab-"):
-            tab_id = widget.id[4:]
-            self.activate_tab(tab_id)
+        if widget and hasattr(widget, "name") and widget.name in self.tabs:
+            self.activate_tab(widget.name)

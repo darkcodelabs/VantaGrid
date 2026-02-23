@@ -17,6 +17,7 @@ from vantagrid.widgets.usage_panel import UsagePanel
 from vantagrid.widgets.skill_browser import SkillBrowser
 from vantagrid.widgets.theme_picker import ThemePicker
 from vantagrid.widgets.command_palette import CommandPalette
+from vantagrid.widgets.image_viewer import ImageViewer
 
 
 class VantaGridApp(App):
@@ -100,8 +101,8 @@ class VantaGridApp(App):
                     yield TabBar()
 
                 with Horizontal(id="content-area"):
-                    yield TerminalPane(account_name="DarkCode")
-                    yield TerminalPane(account_name="haKCer")
+                    yield TerminalPane(account_name="DarkCode", plan="5x")
+                    yield TerminalPane(account_name="haKCer", plan="20x")
 
                 with Vertical(id="bottom-panel"):
                     yield UsagePanel()
@@ -117,6 +118,21 @@ class VantaGridApp(App):
             self.query_one("#sidebar").display = False
         if not self._show_bottom:
             self.query_one("#bottom-panel").display = False
+
+        # Populate theme picker (after theme is applied)
+        self.query_one(ThemePicker).set_themes(
+            list_builtin_themes(), active=self._theme_name
+        )
+
+        # Add tabs
+        tab_bar = self.query_one(TabBar)
+        tab_bar.add_tab("darkcode", "☰ Claude Code (DarkCode)")
+        tab_bar.add_tab("hakcer", "☰ Claude Code (haKCer)")
+
+        # Seed usage panel
+        usage = self.query_one(UsagePanel)
+        usage.set_account_usage("DarkCode", 0.0)
+        usage.set_account_usage("haKCer", 0.0)
 
     def action_swap_focus(self) -> None:
         panes = list(self.query(TerminalPane))
@@ -142,6 +158,7 @@ class VantaGridApp(App):
         self._theme_name = next_theme
         self.theme = next_theme
         self.query_one(StatusBar).set_theme(next_theme)
+        self.query_one(ThemePicker).set_active_theme(next_theme)
 
     def action_toggle_sidebar(self) -> None:
         sidebar = self.query_one("#sidebar")
@@ -177,9 +194,25 @@ class VantaGridApp(App):
         if action:
             action()
 
+    def on_file_explorer_file_selected(
+        self, message: FileExplorer.FileSelected
+    ) -> None:
+        """Handle file selection from the explorer."""
+        path = message.path
+        image_exts = {".png", ".jpg", ".jpeg", ".gif", ".bmp", ".webp"}
+        if path.suffix.lower() in image_exts:
+            viewer = ImageViewer(path)
+            # Replace bottom panel content with image viewer
+            bottom = self.query_one("#bottom-panel")
+            for child in list(bottom.children):
+                child.remove()
+            bottom.mount(viewer)
+            bottom.display = True
+
     def on_theme_picker_theme_selected(
         self, message: ThemePicker.ThemeSelected
     ) -> None:
         self._theme_name = message.theme_name
         self.theme = self._theme_name
         self.query_one(StatusBar).set_theme(self._theme_name)
+        self.query_one(ThemePicker).set_active_theme(self._theme_name)

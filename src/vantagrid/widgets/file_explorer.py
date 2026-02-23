@@ -21,7 +21,7 @@ class FileExplorer(Vertical):
     FileExplorer {
         height: 1fr;
         overflow: auto;
-        border: solid #e94560;
+        border: round $primary;
     }
 
     .explorer-title {
@@ -49,7 +49,7 @@ class FileExplorer(Vertical):
 
     def on_directory_tree_file_selected(self, event):
         """Handle file selection in the directory tree."""
-        self.post_message(self.FileSelected(event.file_path))
+        self.post_message(self.FileSelected(event.path))
 
     def set_root(self, path: str | Path):
         """Change the root directory."""
